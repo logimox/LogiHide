@@ -73,7 +73,7 @@ struct AccessoryAlertsSettingsView: View {
     /// The sentence and the button of a refused permission; nothing asks again by itself.
     private var deniedAccess: some View {
         HStack(spacing: HolzBarTheme.Spacing.sm) {
-            Text("holzBar may not use Bluetooth, so connection alerts are off.")
+            Text("LogiHide may not use Bluetooth, so connection alerts are off.")
                 .font(HolzBarTheme.Typography.callout)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)

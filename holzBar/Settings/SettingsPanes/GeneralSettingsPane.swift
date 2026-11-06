@@ -70,21 +70,24 @@ struct GeneralSettingsPane: View {
     private var appOptions: some View {
         LaunchAtLoginToggle()
         Toggle("Show What's New after an update", isOn: $settings.showsWhatsNewAfterUpdate)
-            .annotation("The What's New window opens once after holzBar is updated.")
+            .annotation("The What's New window opens once after LogiHide is updated.")
     }
 
     // MARK: holzBar Icon Options
 
     @ViewBuilder
     private var holzBarIconOptions: some View {
-        HolzBarIconCards(settings: settings)
+        Toggle("Show LogiHide in the menu bar", isOn: $settings.showHolzBarIcon)
+        Text("Click for system status. Shift-click to show or hide icons. Right-click for the menu.")
+            .font(.caption)
+            .foregroundStyle(.secondary)
         if settings.showHolzBarIcon {
             Toggle(isOn: $settings.showsHiddenItemCount) {
                 HStack(spacing: HolzBarTheme.Spacing.sm) {
                     Text("Show the number of hidden items on the icon")
                 }
             }
-            .annotation("A small number on the holzBar icon says how many items are hidden right now.")
+            .annotation("A small number on the LogiHide icon says how many items are hidden right now.")
         }
     }
 
@@ -106,20 +109,20 @@ struct GeneralSettingsPane: View {
                 Toggle("Show items covered by the notch", isOn: $settings.showsNotchOverflowInShelf)
                     .annotation {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Visible items that the notch hides, for example behind a long application menu, also appear in the holzBar Shelf.")
+                            Text("Visible items that the notch hides, for example behind a long application menu, also appear in the LogiHide Shelf.")
                             Text("On macOS 27, items that macOS shows in its own expanded overflow are not listed a second time.")
                         }
                     }
             } else {
                 Toggle("Show items covered by the notch", isOn: $settings.showsNotchOverflowInShelf)
-                    .annotation("Visible items that the notch hides, for example behind a long application menu, also appear in the holzBar Shelf.")
+                    .annotation("Visible items that the notch hides, for example behind a long application menu, also appear in the LogiHide Shelf.")
             }
         }
     }
 
     @ViewBuilder
     private var useShelf: some View {
-        Toggle("Use holzBar Shelf", isOn: $settings.useShelf)
+        Toggle("Use LogiHide Shelf", isOn: $settings.useShelf)
             .annotation("Show hidden menu bar items in a separate bar below the menu bar.")
     }
 
@@ -144,7 +147,7 @@ struct GeneralSettingsPane: View {
                 Text("Find items by typing")
             }
         }
-        .annotation("Type in the holzBar Shelf to highlight the best match. Return opens its menu and Escape closes the holzBar Shelf. The holzBar Shelf takes the keyboard when a hotkey opens it.")
+        .annotation("Type in the LogiHide Shelf to highlight the best match. Return opens its menu and Escape closes the LogiHide Shelf. The LogiHide Shelf takes the keyboard when a hotkey opens it.")
     }
 
     @ViewBuilder
@@ -158,7 +161,7 @@ struct GeneralSettingsPane: View {
                     Text("Always-hidden items")
                 }
             }
-            .annotation("The holzBar Shelf shows the always-hidden items behind one tile. Click the tile to open them.")
+            .annotation("The LogiHide Shelf shows the always-hidden items behind one tile. Click the tile to open them.")
         }
     }
 
@@ -169,7 +172,7 @@ struct GeneralSettingsPane: View {
                 Text("Show applications that are not running")
             }
         }
-        .annotation("Applications with a hidden item that are closed appear dimmed in the holzBar Shelf. Click one to open it.")
+        .annotation("Applications with a hidden item that are closed appear dimmed in the LogiHide Shelf. Click one to open it.")
     }
 
     @ViewBuilder
@@ -179,7 +182,7 @@ struct GeneralSettingsPane: View {
                 Text("Rearrange items by dragging")
             }
         }
-        .annotation("Drag an item in the holzBar Shelf to put it in order, into another section or up onto the menu bar to show it there. Where macOS puts the items of a section in order itself, an item can only change its section.")
+        .annotation("Drag an item in the LogiHide Shelf to put it in order, into another section or up onto the menu bar to show it there. Where macOS puts the items of a section in order itself, an item can only change its section.")
     }
 
     @ViewBuilder
@@ -196,9 +199,9 @@ struct GeneralSettingsPane: View {
         .annotation {
             switch settings.shelfStyle {
             case .attached:
-                Text("The holzBar Shelf hangs directly below the menu bar.")
+                Text("The LogiHide Shelf hangs directly below the menu bar.")
             case .floating:
-                Text("The holzBar Shelf floats a little below the menu bar, as a bar of its own.")
+                Text("The LogiHide Shelf floats a little below the menu bar, as a bar of its own.")
             }
         }
     }
@@ -213,13 +216,13 @@ struct GeneralSettingsPane: View {
         .annotation {
             switch settings.shelfLocation {
             case .dynamic:
-                Text("The holzBar Shelf's location changes based on context.")
+                Text("The LogiHide Shelf's location changes based on context.")
             case .mousePointer:
-                Text("The holzBar Shelf is centered below the mouse pointer.")
+                Text("The LogiHide Shelf is centered below the mouse pointer.")
             case .holzBarIcon:
-                Text("The holzBar Shelf is centered below the holzBar icon.")
+                Text("The LogiHide Shelf is centered below the LogiHide icon.")
             case .screenEdge:
-                Text("The holzBar Shelf is at the right edge of the screen.")
+                Text("The LogiHide Shelf is at the right edge of the screen.")
             }
         }
     }
@@ -256,7 +259,7 @@ struct GeneralSettingsPane: View {
                     Text("Open Notification Center from the clock")
                 }
             }
-            .annotation("While items are hidden, macOS 27 ignores a click on the clock. holzBar lifts the hiding for a moment and clicks again, so Notification Center opens. Turn this off to leave the click to macOS; the clock then does nothing while items are hidden. It needs only the Accessibility permission holzBar has already.")
+            .annotation("While items are hidden, macOS 27 ignores a click on the clock. LogiHide lifts the hiding for a moment and clicks again, so Notification Center opens. Turn this off to leave the click to macOS; the clock then does nothing while items are hidden. It needs only the Accessibility permission LogiHide has already.")
         }
     }
 
@@ -276,11 +279,11 @@ struct GeneralSettingsPane: View {
         .annotation {
             switch MenuBarBackendKind.current {
             case .service26:
-                Text("Smooth slides the menu bar's items in and out, and the holzBar Shelf out from under the menu bar. Fade fades the holzBar Shelf in; the menu bar's items change at once. Nothing animates while Reduce Motion is on.")
+                Text("Smooth slides the menu bar's items in and out, and the LogiHide Shelf out from under the menu bar. Fade fades the LogiHide Shelf in; the menu bar's items change at once. Nothing animates while Reduce Motion is on.")
             case .accessibility27:
-                Text("macOS animates the menu bar itself on macOS 27, and holzBar cannot change that, so the style applies to the holzBar Shelf: Smooth slides it out from under the menu bar, Fade fades it in. Nothing animates while Reduce Motion is on.")
+                Text("macOS animates the menu bar itself on macOS 27, and LogiHide cannot change that, so the style applies to the LogiHide Shelf: Smooth slides it out from under the menu bar, Fade fades it in. Nothing animates while Reduce Motion is on.")
             case .windowList:
-                Text("The menu bar's items change at once on this version of macOS, so the style applies to the holzBar Shelf: Smooth slides it out from under the menu bar, Fade fades it in. Nothing animates while Reduce Motion is on.")
+                Text("The menu bar's items change at once on this version of macOS, so the style applies to the LogiHide Shelf: Smooth slides it out from under the menu bar, Fade fades it in. Nothing animates while Reduce Motion is on.")
             }
         }
     }
@@ -334,7 +337,7 @@ struct GeneralSettingsPane: View {
                     }
                 }
             } footer: {
-                Text("The display under the pointer decides. Always show everything keeps every section shown there. Collapse keeps the hidden items hidden there: hovering, clicking empty space and scrolling no longer show them, while the holzBar icon and the hotkeys still do. Neither is used with the holzBar Shelf.")
+                Text("The display under the pointer decides. Always show everything keeps every section shown there. Collapse keeps the hidden items hidden there: hovering, clicking empty space and scrolling no longer show them, while the LogiHide icon and the hotkeys still do. Neither is used with the LogiHide Shelf.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -484,15 +487,15 @@ private struct PrivacyIndicatorNote: View {
             VStack(alignment: .leading, spacing: 3) {
                 Label("The camera and microphone indicator is hidden", systemImage: "exclamationmark.triangle")
                     .font(.headline)
-                Text("On macOS 27, while holzBar hides menu bar items, Control Centre does not show its indicator for the camera, the microphone or screen recording. It comes back while holzBar hides no item. holzBar can mark its own icon instead, for the microphone and the camera but not for screen recording. The small green dot beside the clock still appears while the camera is on.")
+                Text("On macOS 27, while LogiHide hides menu bar items, Control Centre does not show its indicator for the camera, the microphone or screen recording. It comes back while LogiHide hides no item. LogiHide can mark its own icon instead, for the microphone and the camera but not for screen recording. The small green dot beside the clock still appears while the camera is on.")
                     .font(HolzBarTheme.Typography.callout.weight(.medium))
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
             .padding(15)
             .frame(maxWidth: .infinity, alignment: .leading)
-            Toggle("Show a dot on the holzBar icon while the microphone or camera is in use", isOn: $settings.holzBarIconShowsCaptureDot)
-                .annotation("Orange for the microphone, green for the camera. Uses no permission; holzBar cannot tell when an app records the screen.")
+            Toggle("Show a dot on the LogiHide icon while the microphone or camera is in use", isOn: $settings.holzBarIconShowsCaptureDot)
+                .annotation("Orange for the microphone, green for the camera. Uses no permission; LogiHide cannot tell when an app records the screen.")
         }
     }
 }

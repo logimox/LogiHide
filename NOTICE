@@ -66,3 +66,19 @@ The full history of changes is available in this repository's Git history.
 
 The original Ice name, app and screenshots belong to Jordan Baird. holzBar is
 an independent fork and is not affiliated with or endorsed by the Ice project.
+
+
+LogiHide modifications, 2026-11-06, by logimox
+-------------------------------------------
+LogiHide is an independent modified fork of holzcloud/holzBar.
+Base commit: 3129512c6f22cf572fadab7cd547dab3aeb3fd2e.
+DuoBar status UI and services are adapted from Mikeli7666/DuoBar,
+commit fc348a53a25855b7c9433583b4beae4eb256feeb (Copyright (c) 2026 Mike Li).
+DuoBar's MIT license is retained in Vendor/DuoStatusKit/LICENSE and in
+holzBar/Resources/Acknowledgements/DuoBar.txt.
+Changes combine system status with holzBar's visible control item, add
+hiding/layout actions, Swedish status labels and distinct app identity/storage.
+The combined work is distributed under GNU GPL v3.0; see LICENSE.
+This fork is not affiliated with or endorsed by the upstream authors.
+The macOS 27 indicator fix supplies a live native NSButton image while
+assessment-mode concealment is active and restores the hosted view on reveal.

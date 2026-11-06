@@ -35,6 +35,22 @@ nonisolated enum Acknowledgements {
     /// The projects holzBar adapts code from, all licensed under the GNU GPL v3.
     static let adaptedCode: [Acknowledgement] = [
         Acknowledgement(
+            name: "holzBar",
+            repository: "https://github.com/holzcloud/holzBar",
+            version: nil,
+            use: "LogiHide is a fork of holzBar by holzcloud, providing menu bar hiding, layout, profiles, automation and the Shelf.",
+            license: gplLicense,
+            licenseFile: nil
+        ),
+        Acknowledgement(
+            name: "DuoBar",
+            repository: "https://github.com/Mikeli7666/DuoBar",
+            version: nil,
+            use: "Battery ring, adaptive ring, network status, audio controls and popover UI. Copyright (c) 2026 Mike Li. Adapted for LogiHide on 2026-11-06.",
+            license: "MIT License",
+            licenseFile: "DuoBar"
+        ),
+        Acknowledgement(
             name: "Ice",
             repository: "https://github.com/jordanbaird/Ice",
             version: nil,

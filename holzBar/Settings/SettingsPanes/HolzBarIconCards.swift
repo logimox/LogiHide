@@ -89,10 +89,10 @@ struct HolzBarIconCards: View {
     private var note: some View {
         VStack(alignment: .leading, spacing: HolzBarTheme.Spacing.xxs) {
             if choice == .none {
-                Text("Without the icon, open holzBar again from Finder, Launchpad or Spotlight to reach Settings, or use the holzbar://settings link.")
+                Text("Without the icon, open LogiHide again from Finder, Launchpad or Spotlight to reach Settings, or use the holzbar://settings link.")
                 hotkeyNote
             } else {
-                Text("Click to show hidden menu bar items. Right-click to access holzBar's settings.")
+                Text("Click to show hidden menu bar items. Right-click to access LogiHide's settings.")
             }
         }
         .font(.subheadline)

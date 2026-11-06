@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10000000000000000000001 /* DuoStatusKit in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000002 /* DuoStatusKit */; };
 		7138A00C2E5B0001008F130C /* NowPlayingRemote.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7138A0022E5B0001008F1302 /* NowPlayingRemote.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -35,7 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7166832A2A767E6A006ABF84 /* holzBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = holzBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        A10000000000000000000004 /* DuoStatusKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Vendor/DuoStatusKit; sourceTree = "<group>"; };
+		7166832A2A767E6A006ABF84 /* holzBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogiHide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7138A0022E5B0001008F1302 /* NowPlayingRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NowPlayingRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10000000000000000000001 /* DuoStatusKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,7 @@
 		716683212A767E6A006ABF84 = {
 			isa = PBXGroup;
 			children = (
+				A10000000000000000000004 /* DuoStatusKit */,
 				7188A69E2E280BB4008F131D /* Shared */,
 				71BDFBE12C978E2A00EF145F /* holzBar */,
 				7138A0012E5B0001008F1301 /* NowPlayingRemote */,
@@ -116,6 +120,7 @@
 			);
 			name = holzBar;
 			packageProductDependencies = (
+				A10000000000000000000002 /* DuoStatusKit */,
 			);
 			productName = holzBar;
 			productReference = 7166832A2A767E6A006ABF84 /* holzBar.app */;
@@ -143,6 +148,20 @@
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
+
+/* Begin XCLocalSwiftPackageReference section */
+        A10000000000000000000003 /* DuoStatusKit */ = {
+            isa = XCLocalSwiftPackageReference;
+            relativePath = Vendor/DuoStatusKit;
+        };
+/* End XCLocalSwiftPackageReference section */
+/* Begin XCSwiftPackageProductDependency section */
+        A10000000000000000000002 /* DuoStatusKit */ = {
+            isa = XCSwiftPackageProductDependency;
+            package = A10000000000000000000003 /* DuoStatusKit */;
+            productName = DuoStatusKit;
+        };
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin PBXProject section */
 		716683222A767E6A006ABF84 /* Project object */ = {
@@ -189,6 +208,7 @@
 			);
 			mainGroup = 716683212A767E6A006ABF84;
 			packageReferences = (
+				A10000000000000000000003 /* DuoStatusKit */,
 			);
 			productRefGroup = 7166832B2A767E6A006ABF84 /* Products */;
 			projectDirPath = "";
@@ -311,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Jordan Baird. holzBar modifications © 2026 holzcloud.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Jordan Baird. holzBar modifications © 2026 holzcloud. DuoBar © 2026 Mike Li. LogiHide modifications © 2026 logimox.";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -370,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Jordan Baird. holzBar modifications © 2026 holzcloud.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Jordan Baird. holzBar modifications © 2026 holzcloud. DuoBar © 2026 Mike Li. LogiHide modifications © 2026 logimox.";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -398,17 +418,17 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = holzBar/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = holzBar;
+				INFOPLIST_KEY_CFBundleDisplayName = LogiHide;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.holzcloud.holzBar;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide;
 				PRODUCT_MODULE_NAME = holzBar;
-				PRODUCT_NAME = holzBar;
+				PRODUCT_NAME = LogiHide;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -434,17 +454,17 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = holzBar/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = holzBar;
+				INFOPLIST_KEY_CFBundleDisplayName = LogiHide;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.holzcloud.holzBar;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide;
 				PRODUCT_MODULE_NAME = holzBar;
-				PRODUCT_NAME = holzBar;
+				PRODUCT_NAME = LogiHide;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -473,8 +493,8 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 0.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.holzcloud.holzBar.NowPlayingRemote;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide.NowPlayingRemote;
 				PRODUCT_MODULE_NAME = NowPlayingRemote;
 				PRODUCT_NAME = NowPlayingRemote;
 				SKIP_INSTALL = YES;
@@ -506,8 +526,8 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 0.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.holzcloud.holzBar.NowPlayingRemote;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide.NowPlayingRemote;
 				PRODUCT_MODULE_NAME = NowPlayingRemote;
 				PRODUCT_NAME = NowPlayingRemote;
 				SKIP_INSTALL = YES;

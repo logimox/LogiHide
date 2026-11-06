@@ -68,7 +68,7 @@ struct AdvancedSettingsPane: View {
         .sheet(item: $revokingPermission) { permission in
             ConfirmSheet(
                 title: Text("Revoke this permission?"),
-                message: Text("holzBar stops using it at once and cannot do what needs it until you allow it again. You can also remove it yourself in System Settings, in Privacy & Security."),
+                message: Text("LogiHide stops using it at once and cannot do what needs it until you allow it again. You can also remove it yourself in System Settings, in Privacy & Security."),
                 confirmTitle: "Revoke \(permission.title)",
                 cancelTitle: "Cancel",
                 isDestructive: true,
@@ -113,7 +113,7 @@ struct AdvancedSettingsPane: View {
                 }
             }
         }
-        .annotation("Applies to items holzBar has not seen before. Items that are already arranged stay where they are.")
+        .annotation("Applies to items LogiHide has not seen before. Items that are already arranged stay where they are.")
     }
 
     @ViewBuilder
@@ -267,7 +267,7 @@ struct AdvancedSettingsPane: View {
 
     private var autoZenWhileSharingScreen: some View {
         Toggle("Turn on Zen mode while the screen is mirrored or shared", isOn: $settings.autoZenWhileSharingScreen)
-            .annotation("Uses no permission: holzBar notices a mirrored display and macOS's screen sharing agent.")
+            .annotation("Uses no permission: LogiHide notices a mirrored display and macOS's screen sharing agent.")
     }
 
     @ViewBuilder

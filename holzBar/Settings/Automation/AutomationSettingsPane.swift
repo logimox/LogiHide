@@ -32,14 +32,14 @@ struct AutomationSettingsPane: View {
 
     var body: some View {
         HolzBarForm(alignment: .leading, spacing: HolzBarTheme.Spacing.md) {
-            Text("When something happens, holzBar changes the menu bar for you. With no rules, nothing is observed.")
+            Text("When something happens, LogiHide changes the menu bar for you. With no rules, nothing is observed.")
                 .font(HolzBarTheme.Typography.callout)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)
             if !manager.rules.isEmpty {
                 ruleList
             }
-            Text("To apply a layout profile with a Focus, add the holzBar filter to that Focus in System Settings.")
+            Text("To apply a layout profile with a Focus, add the LogiHide filter to that Focus in System Settings.")
                 .font(HolzBarTheme.Typography.caption)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)

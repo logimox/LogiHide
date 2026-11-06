@@ -271,7 +271,7 @@ extension HotkeyAction {
         case .searchMenuBarItems:
             String(localized: "Search menu bar items")
         case .enableShelf:
-            String(localized: "Enable the holzBar Shelf")
+            String(localized: "Enable the LogiHide Shelf")
         case .toggleApplicationMenus:
             String(localized: "Toggle application menus")
         case .showHiddenSectionTemporarily:

@@ -20,7 +20,7 @@ struct AppleItemsSection: View {
             Toggle("Hide Control Center", isOn: binding(for: .controlCentre))
             Toggle("Hide Wi-Fi", isOn: binding(for: .wifi))
             Toggle("Hide the battery", isOn: binding(for: .battery))
-            caption(Text("While a system item is hidden, Control Center does not show its camera and microphone indicator; holzBar marks its own icon instead."))
+            caption(Text("While a system item is hidden, Control Center does not show its camera and microphone indicator; LogiHide marks its own icon instead."))
             replacementsList
         }
         .toggleStyle(.switch)

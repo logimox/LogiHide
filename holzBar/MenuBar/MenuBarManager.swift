@@ -431,7 +431,7 @@ final class MenuBarManager {
 
     /// Shows the secondary context menu.
     func showSecondaryContextMenu(at point: CGPoint) {
-        let menu = NSMenu(title: "holzBar")
+        let menu = NSMenu(title: "LogiHide")
 
         let editAppearanceItem = NSMenuItem(
             title: String(localized: "Edit Menu Bar Appearance…"),
@@ -444,7 +444,7 @@ final class MenuBarManager {
         menu.addItem(.separator())
 
         let settingsItem = NSMenuItem(
-            title: String(localized: "holzBar Settings…"),
+            title: String(localized: "LogiHide Settings…"),
             action: #selector(AppDelegate.openSettingsWindow),
             keyEquivalent: ","
         )

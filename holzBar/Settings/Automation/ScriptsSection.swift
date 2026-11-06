@@ -32,7 +32,7 @@ struct ScriptsSection: View {
             Text("Scripts")
                 .font(.headline)
         } content: {
-            Text("Scripts run as you, with holzBar's permissions. macOS asks separately before a script controls another app. Only scripts in the folder you chose run, and only after you allowed their exact content.")
+            Text("Scripts run as you, with LogiHide's permissions. macOS asks separately before a script controls another app. Only scripts in the folder you chose run, and only after you allowed their exact content.")
                 .font(HolzBarTheme.Typography.callout)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -74,7 +74,7 @@ struct ScriptsSection: View {
                 notice(problemText(problem))
             }
             if store.saveFailed {
-                notice(Text("Your script settings could not be saved on this Mac. holzBar tries again at the next change."))
+                notice(Text("Your script settings could not be saved on this Mac. LogiHide tries again at the next change."))
             }
             HStack {
                 Button("Choose Folder…") {
@@ -148,10 +148,10 @@ struct ScriptsSection: View {
 
     private func problemText(_ problem: ScriptStore.Problem) -> Text {
         switch problem {
-        case .newerVersion: Text("Your scripts were set up by a newer holzBar. Nothing runs until you update holzBar.")
+        case .newerVersion: Text("Your scripts were set up by a newer LogiHide. Nothing runs until you update LogiHide.")
         case .setAside: Text("The scripts file could not be read and was set aside. Allow your scripts again.")
         case .unavailable:
-            Text("The scripts file could not be opened just now. Nothing runs and nothing is saved until holzBar starts again.")
+            Text("The scripts file could not be opened just now. Nothing runs and nothing is saved until LogiHide starts again.")
         }
     }
 

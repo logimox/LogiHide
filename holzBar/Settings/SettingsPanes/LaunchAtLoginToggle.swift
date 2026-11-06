@@ -29,7 +29,7 @@ struct LaunchAtLoginToggle: View {
             Toggle("Launch at login", isOn: isEnabled)
             if status == .requiresApproval {
                 HStack {
-                    Text("Allow holzBar in System Settings to launch it at login.")
+                    Text("Allow LogiHide in System Settings to launch it at login.")
                         .font(.callout)
                         .foregroundStyle(.secondary)
                     Button("Open Login Items Settings") {

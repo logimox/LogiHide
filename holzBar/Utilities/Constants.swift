@@ -24,7 +24,7 @@ nonisolated enum Constants {
     static let displayName = Bundle.main.displayName!
 
     /// The holzBar repository.
-    static let repositoryURL = URL(string: "https://github.com/holzcloud/holzBar")!
+    static let repositoryURL = URL(string: "https://github.com/logimox/LogiHide")!
 
     /// The holzBar issue tracker.
     static let issuesURL = repositoryURL.appending(path: "issues")
@@ -33,7 +33,7 @@ nonisolated enum Constants {
     static let releasesURL = repositoryURL.appending(path: "releases")
 
     /// The holzBar website.
-    static let websiteURL = URL(string: "https://holzcloud.ch/holzbar")!
+    static let websiteURL = repositoryURL
 
     /// The original Ice by Jordan Baird, which holzBar is a fork of.
     static let originalIceURL = URL(string: "https://github.com/jordanbaird/Ice")!

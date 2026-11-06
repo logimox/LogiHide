@@ -20,12 +20,13 @@ enum ConflictingApps {
     /// Bundle identifiers of menu bar managers that conflict with holzBar.
     private static let bundleIdentifiers: Set<String> = [
         "com.jordanbaird.Ice",
+        "com.holzcloud.holzBar",
         "com.surteesstudios.Bartender",
         "com.dwarvesv.minimalbar",
     ]
 
     /// Names of conflicting menu bar managers whose bundle identifier is not known.
-    private static let names: Set<String> = ["Ice", "Thaw", "Bartender", "Hidden Bar"]
+    private static let names: Set<String> = ["Ice", "Thaw", "Bartender", "Hidden Bar", "holzBar"]
 
     /// The running menu bar managers other than holzBar.
     static var running: [NSRunningApplication] {
@@ -60,9 +61,9 @@ enum ConflictingApps {
         let alert = NSAlert()
         alert.alertStyle = .warning
         alert.messageText = String(localized: "Quit \(names) first?")
-        alert.informativeText = String(localized: "holzBar and \(names) would both try to manage the menu bar. They get in each other's way, and can leave the pointer unable to click anything. holzBar can quit \(names) for you.")
+        alert.informativeText = String(localized: "LogiHide and \(names) would both try to manage the menu bar. They get in each other's way, and can leave the pointer unable to click anything. LogiHide can quit \(names) for you.")
         alert.addButton(withTitle: String(localized: "Quit \(names) and Continue"))
-        alert.addButton(withTitle: String(localized: "Quit holzBar"))
+        alert.addButton(withTitle: String(localized: "Quit LogiHide"))
         NSApp.activate()
         guard alert.runModal() == .alertFirstButtonReturn else {
             return false

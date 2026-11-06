@@ -15,7 +15,7 @@ struct SearchSettingsSection: View {
     var body: some View {
         HolzBarSection("Search") {
             Toggle("Smart Categories", isOn: $general.smartCategories)
-                .annotation("Adds category buttons to the search, such as Network and Media, worked out from what holzBar can read about each app. Nothing is recorded.")
+                .annotation("Adds category buttons to the search, such as Network and Media, worked out from what LogiHide can read about each app. Nothing is recorded.")
             LabeledContent {
                 Button("Forget") {
                     opens.forget()

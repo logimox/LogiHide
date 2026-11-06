@@ -107,7 +107,7 @@ final class LayoutBarItemView: NSView {
                 self.toolTip = String(localized: "macOS 27 doesn't let apps hide this system item.")
             } else if item.sourceApplication?.bundleIdentifier == nil {
                 self.isEnabled = false
-                self.toolTip = String(localized: "macOS 27 hides whole apps, and holzBar can't tell which app this item belongs to.")
+                self.toolTip = String(localized: "macOS 27 hides whole apps, and LogiHide can't tell which app this item belongs to.")
             }
         }
 

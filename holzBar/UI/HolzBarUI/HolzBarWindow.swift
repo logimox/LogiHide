@@ -113,7 +113,7 @@ enum HolzBarWindowIdentifier: String, Sendable, CustomStringConvertible {
     /// - Note: Use ``titleKey`` to get the localized title.
     var titleString: String {
         switch self {
-        case .settings: "holzBar"
+        case .settings: "LogiHide"
         case .permissions: "Permissions"
         case .whatsNew: "What's New"
         }

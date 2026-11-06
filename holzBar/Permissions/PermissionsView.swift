@@ -58,7 +58,7 @@ struct PermissionsView: View {
                 Text("Permissions")
                     .font(HolzBarTheme.Typography.titleLarge)
                     .accessibilityAddTraits(.isHeader)
-                Text("holzBar never connects to the network.")
+                Text("LogiHide never connects to the network.")
                     .font(.callout)
                     .foregroundStyle(.tint)
                     .fontWeight(.medium)
@@ -82,6 +82,9 @@ struct PermissionsView: View {
     private var footerView: some View {
         HStack {
             quitButton
+            Button("System Status") {
+                appState.menuBarManager.controlItem(withName: .visible)?.toggleSystemStatus()
+            }
             continueButton
         }
         .controlSize(.large)

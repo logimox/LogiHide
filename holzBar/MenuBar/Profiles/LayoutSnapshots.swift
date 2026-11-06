@@ -54,7 +54,7 @@ final class LayoutSnapshots {
 
     private static let directory: URL = {
         let base = URL.applicationSupportDirectory
-        return base.appending(path: "holzBar", directoryHint: .isDirectory)
+        return base.appending(path: "LogiHide", directoryHint: .isDirectory)
             .appending(path: "Snapshots", directoryHint: .isDirectory)
     }()
 

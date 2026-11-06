@@ -37,7 +37,7 @@ final class ItemIconStore {
     /// The folder of the chosen images.
     static var folder: URL? {
         FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?
-            .appending(path: "holzBar", directoryHint: .isDirectory)
+            .appending(path: "LogiHide", directoryHint: .isDirectory)
             .appending(path: "ItemIcons", directoryHint: .isDirectory)
     }
 

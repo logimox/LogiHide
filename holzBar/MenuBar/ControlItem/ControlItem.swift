@@ -4,6 +4,7 @@
 //
 
 import Cocoa
+import DuoStatusKit
 import Observation
 import OSLog
 
@@ -138,6 +139,9 @@ final class ControlItem {
     /// The shared app state.
     @ObservationIgnored private weak var appState: AppState?
 
+    /// The combined battery/network/audio indicator on the existing visible control item.
+    @ObservationIgnored private var duoStatus: DuoStatusIntegration?
+
     /// A Boolean value that indicates whether the divider's length is stepping now, so the
     /// items beside it are still on their way. Readers of item positions wait for the end
     /// (see ``MenuBarManager``).
@@ -242,8 +246,39 @@ final class ControlItem {
 
     /// Performs the initial setup of the control item.
     func performSetup(with appState: AppState) {
-        self.appState = appState
+        prepareSystemStatus(with: appState)
         configureObservers()
+    }
+
+    /// System status works before Accessibility is granted. Hiding stays permission-gated.
+    func prepareSystemStatus(with appState: AppState) {
+        self.appState = appState
+        if identifier == .visible, duoStatus == nil {
+            duoStatus = DuoStatusIntegration(
+                statusItem: statusItem,
+                openSettings: { [weak appState] in
+                    guard let appState else { return }
+                    guard !appState.openPermissionsWindowIfNeeded() else { return }
+                    appState.navigationState.settingsNavigationIdentifier = .systemStatus
+                    appState.activate(for: .settings)
+                    appState.openWindow(.settings)
+                },
+                openLayout: { [weak appState] in
+                    guard let appState else { return }
+                    guard !appState.openPermissionsWindowIfNeeded() else { return }
+                    appState.navigationState.settingsNavigationIdentifier = .menuBarLayout
+                    appState.activate(for: .settings)
+                    appState.openWindow(.settings)
+                },
+                toggleHiddenItems: { [weak appState] in
+                    guard let appState, appState.isSetUp else {
+                        _ = appState?.openPermissionsWindowIfNeeded()
+                        return
+                    }
+                    appState.menuBarManager.section(withName: .hidden)?.toggle(isUserRequest: true)
+                }
+            )
+        }
     }
 
     /// Configures the internal observers for the control item.
@@ -296,6 +331,11 @@ final class ControlItem {
                 }
             )
             if #available(macOS 27.0, *) {
+                observers.append(
+                    ObservationLoop.observe { appState.concealer27.isConcealing } onChange: { [weak self] _ in
+                        self?.updateStatusItem()
+                    }
+                )
                 observers.append(
                     ObservationLoop.observe { appState.captureBadge27 } onChange: { [weak self] _ in
                         self?.updateMenuBarPresence()
@@ -444,6 +484,24 @@ final class ControlItem {
 
         switch identifier {
         case .visible:
+            if duoStatus != nil {
+                if #available(macOS 27.0, *) {
+                    let concealing = appState.concealer27.isConcealing
+                    let changed = duoStatus?.setNativeIconRequired(concealing) ?? false
+                    if changed, concealing, isAddedToMenuBar {
+                        // Give MenuBarAgent the new native image if it dropped the hosted item.
+                        reinsert()
+                    }
+                }
+                // DuoBar controls its own width, including the optional percentage label.
+                // Keep holzBar's capture indicator and hidden-item count above that view.
+                button.appearsDisabled = false
+                updateCaptureDot(on: button)
+                updateCountBadge(on: button)
+                updateIconDescription(on: button)
+                button.toolTip = String(localized: "LogiHide: click for system status, Shift-click to show or hide icons, right-click for the menu.")
+                return
+            }
             updateStatusItemVisibility(true)
             button.appearsDisabled = false
 
@@ -878,6 +936,16 @@ final class ControlItem {
         case .leftMouseDown:
             let modifierFlags = NSEvent.heldModifierFlags
 
+            if identifier == .visible, modifierFlags.isEmpty, let duoStatus {
+                duoStatus.togglePopover()
+                return
+            }
+            guard appState?.isSetUp == true else {
+                _ = appState?.openPermissionsWindowIfNeeded()
+                return
+            }
+            if identifier == .visible { duoStatus?.dismissPopover() }
+
             if modifierFlags == .control {
                 // Shown from a run loop block, not from a task: the menu's tracking loop
                 // inside a main-actor job would hold back every other main-actor job while
@@ -920,10 +988,25 @@ final class ControlItem {
                 }
             }
         case .rightMouseUp:
+            duoStatus?.dismissPopover()
+            guard appState?.isSetUp == true else {
+                _ = appState?.openPermissionsWindowIfNeeded()
+                return
+            }
             showMenu()
         default:
             return
         }
+    }
+
+    /// The controller borrows this item's NSStatusItem, so it only removes its content.
+    func invalidateSystemStatus() {
+        duoStatus?.invalidate()
+        duoStatus = nil
+    }
+
+    func toggleSystemStatus() {
+        duoStatus?.togglePopover()
     }
 
     /// Creates a menu to show under the control item.
@@ -932,10 +1015,10 @@ final class ControlItem {
             appState.settings.hotkeys.hotkey(withAction: action)
         }
 
-        let menu = NSMenu(title: "holzBar")
+        let menu = NSMenu(title: "LogiHide")
 
         let settingsItem = NSMenuItem(
-            title: String(localized: "holzBar Settings…"),
+            title: String(localized: "LogiHide Settings…"),
             action: #selector(AppDelegate.openSettingsWindow),
             keyEquivalent: ","
         )
@@ -1021,7 +1104,7 @@ final class ControlItem {
         menu.addItem(.separator())
 
         let quitItem = NSMenuItem(
-            title: String(localized: "Quit holzBar"),
+            title: String(localized: "Quit LogiHide"),
             action: #selector(NSApp.terminate),
             keyEquivalent: "q"
         )

@@ -56,7 +56,7 @@ final class ItemImageStore27 {
 
     /// Where earlier versions kept the images: in Application Support, which is backed up.
     private static let legacyDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-        .appending(path: "holzBar/ItemImages", directoryHint: .isDirectory)
+        .appending(path: "LogiHide/ItemImages", directoryHint: .isDirectory)
     private var index = [String: IndexEntry]()
     private var loaded = [String: CapturedImage]()
     private var photoSchedule = PhotoSchedule27()

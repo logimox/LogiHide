@@ -1,6 +1,6 @@
 //
 //  WhatsNewHistory.swift
-//  holzBar
+//  LogiHide
 //
 
 import Foundation
@@ -35,7 +35,7 @@ nonisolated enum WhatsNewHistory {
             fixed: [
                 WhatsNewFix(text: "The Permissions window is smaller, so Quit and Continue stay on screen."),
                 WhatsNewFix(text: "Clicking a tab of the Notch hub no longer opens the Shelf."),
-                WhatsNewFix(text: "Clicking the holzBar icon no longer opens another item's menu, such as Wi-Fi, instead of the Shelf."),
+                WhatsNewFix(text: "Clicking the LogiHide icon no longer opens another item's menu, such as Wi-Fi, instead of the Shelf."),
             ]
         ),
         WhatsNewRelease(version: "1.0.1",
@@ -52,7 +52,7 @@ nonisolated enum WhatsNewHistory {
                 ),
             ],
             fixed: [
-                WhatsNewFix(text: "holzBar no longer quits when a Bluetooth device such as AirPods connects."),
+                WhatsNewFix(text: "LogiHide no longer quits when a Bluetooth device such as AirPods connects."),
             ]
         ),
         WhatsNewRelease(version: "1.0.0",
@@ -105,7 +105,7 @@ nonisolated enum WhatsNewHistory {
                 WhatsNewItem(
                     symbol: "number.circle",
                     title: "Count badge",
-                    detail: "A small number on the holzBar icon says how many items are hidden."
+                    detail: "A small number on the LogiHide icon says how many items are hidden."
                 ),
                 WhatsNewItem(
                     symbol: "square.and.arrow.down",

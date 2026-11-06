@@ -27,10 +27,10 @@ nonisolated class HolzBarScriptCommand: NSScriptCommand {
         // Apple events arrive on the main thread.
         let failure: (number: Int, message: String)? = MainActor.assumeIsolated {
             guard let appState = AppState.current, appState.isSetUp else {
-                return (-1708, String(localized: "holzBar is not ready yet."))
+                return (-1708, String(localized: "LogiHide is not ready yet."))
             }
             guard let command else {
-                return (-1708, String(localized: "holzBar does not know that command."))
+                return (-1708, String(localized: "LogiHide does not know that command."))
             }
             if let message = Self.unknownTarget(of: command, appState: appState) {
                 return (-1728, message)

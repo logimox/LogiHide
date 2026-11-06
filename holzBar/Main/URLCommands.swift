@@ -45,7 +45,7 @@ enum URLCommands {
     private static let logger = Logger(category: "URLCommands")
 
     /// The URL scheme holzBar accepts.
-    private static let scheme = "holzbar"
+    private static let scheme = "logihide"
 
     /// Lets one question be open at a time, and none for a while after a declined one.
     private static var promptGate = URLPrompt.Gate()
@@ -162,7 +162,7 @@ enum URLCommands {
     private static func confirmation(for action: URLCommand.Action, appState: AppState) -> Confirmation? {
         let manager = appState.menuBarManager
         let general = appState.settings.general
-        let settingDetail = String(localized: "Another app asked holzBar to change this setting.")
+        let settingDetail = String(localized: "Another app asked LogiHide to change this setting.")
         switch action {
         case .applyProfile(let name):
             guard let profile = appState.profiles.profile(named: name) else {
@@ -173,7 +173,7 @@ enum URLCommands {
             let displayName = URLPrompt.displayName(storedName)
             return Confirmation(
                 message: String(localized: "Apply the layout profile \u{201C}\(displayName)\u{201D}?"),
-                detail: String(localized: "Another app asked holzBar to rearrange your menu bar."),
+                detail: String(localized: "Another app asked LogiHide to rearrange your menu bar."),
                 confirmTitle: String(localized: "Apply"),
                 perform: {
                     // From outside holzBar: no hook runs, and it is no profile-change event
@@ -198,7 +198,7 @@ enum URLCommands {
                 message: isEnabled
                     ? String(localized: "Turn on the automation rule \u{201C}\(displayName)\u{201D}?")
                     : String(localized: "Turn off the automation rule \u{201C}\(displayName)\u{201D}?"),
-                detail: String(localized: "Another app asked holzBar to change what it does by itself."),
+                detail: String(localized: "Another app asked LogiHide to change what it does by itself."),
                 confirmTitle: isEnabled ? String(localized: "Turn On") : String(localized: "Turn Off"),
                 perform: {
                     appState.automation.setRule(withID: ruleID, enabled: isEnabled)
@@ -208,8 +208,8 @@ enum URLCommands {
             let turnsOn = !general.useShelf
             return Confirmation(
                 message: turnsOn
-                    ? String(localized: "Turn on the holzBar Shelf?")
-                    : String(localized: "Turn off the holzBar Shelf?"),
+                    ? String(localized: "Turn on the LogiHide Shelf?")
+                    : String(localized: "Turn off the LogiHide Shelf?"),
                 detail: settingDetail,
                 confirmTitle: turnsOn ? String(localized: "Turn On") : String(localized: "Turn Off"),
                 perform: {
@@ -231,7 +231,7 @@ enum URLCommands {
         case .zenMode:
             return Confirmation(
                 message: String(localized: "Turn off Zen mode?"),
-                detail: String(localized: "Another app asked holzBar to turn off Zen mode. Hidden items could then be shown."),
+                detail: String(localized: "Another app asked LogiHide to turn off Zen mode. Hidden items could then be shown."),
                 confirmTitle: String(localized: "Turn Off"),
                 perform: {
                     manager.setZenModeFromURL(manager.zenMode.requested(byURL: .turnOff))

@@ -95,7 +95,7 @@ struct AcknowledgementsTests {
         } else {
             files = []
         }
-        let expected = Acknowledgements.packages.compactMap(\.licenseFile).map { "\($0).txt" }
+        let expected = (Acknowledgements.adaptedCode + Acknowledgements.packages).compactMap(\.licenseFile).map { "\($0).txt" } + ["GPLv3.txt"]
         #expect(Set(files) == Set(expected))
         #expect(files.count == expected.count)
     }
@@ -113,16 +113,25 @@ struct AcknowledgementsTests {
     @Test("The adapted code is credited")
     func adaptedCodeIsCredited() {
         let adapted = Acknowledgements.adaptedCode
-        #expect(adapted.map(\.name) == ["Ice", "Barometer", "Thaw"])
+        #expect(adapted.map(\.name) == ["holzBar", "DuoBar", "Ice", "Barometer", "Thaw"])
         #expect(adapted.map(\.repository) == [
+            "https://github.com/holzcloud/holzBar",
+            "https://github.com/Mikeli7666/DuoBar",
             "https://github.com/jordanbaird/Ice",
             "https://github.com/mackid1993/Barometer",
             "https://github.com/thaw-app/Thaw",
         ])
         for acknowledgement in adapted {
-            #expect(acknowledgement.license == "GNU General Public License v3.0")
             #expect(acknowledgement.version == nil)
-            #expect(acknowledgement.licenseFile == nil)
+            if acknowledgement.name == "DuoBar" {
+                #expect(acknowledgement.license == "MIT License")
+                #expect(acknowledgement.licenseFile == "DuoBar")
+                let text = try? String(contentsOf: Self.licenseDirectory.appending(path: "DuoBar.txt"), encoding: .utf8)
+                #expect(text?.contains("Copyright (c) 2026 Mike Li") == true)
+            } else {
+                #expect(acknowledgement.license == "GNU General Public License v3.0")
+                #expect(acknowledgement.licenseFile == nil)
+            }
         }
     }
 }

@@ -327,7 +327,7 @@ final class ScreenRecordingPermission: Permission {
             settingsURL: URL(string: "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_ScreenCapture"),
             tccService: "ScreenCapture",
             summary: ScreenRecordingFeature.summary.localizedFromCatalog,
-            withoutNote: String(localized: "Optional. Without it holzBar shows the apps' icons."),
+            withoutNote: String(localized: "Optional. Without it LogiHide shows the apps' icons."),
             check: {
                 // Refreshes the cached result too, which the capture paths read.
                 ScreenCapture.cachedCheckPermissions(reset: true)

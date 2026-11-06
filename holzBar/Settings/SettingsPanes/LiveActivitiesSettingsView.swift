@@ -23,14 +23,14 @@ struct LiveActivitiesSettingsView: View {
         VStack(alignment: .leading, spacing: HolzBarTheme.Spacing.sm) {
             if #available(macOS 14.2, *) {
                 Toggle("Camera and microphone in use", isOn: $settings.capturesInUse)
-                caption(Text("A capsule shows while another app uses the camera or the microphone. holzBar reads no audio or video."))
+                caption(Text("A capsule shows while another app uses the camera or the microphone. LogiHide reads no audio or video."))
             }
             Toggle("Downloads", isOn: $settings.watchesDownloads)
-            caption(Text("Asks for access to your Downloads folder when you switch it on. holzBar never reads what you download."))
+            caption(Text("Asks for access to your Downloads folder when you switch it on. LogiHide never reads what you download."))
             if settings.watchesDownloads, downloadsAccess == .denied {
                 deniedAccess
             }
-            caption(Text("These are holzBar's own activities, not Apple's Live Activities from your iPhone."))
+            caption(Text("These are LogiHide's own activities, not Apple's Live Activities from your iPhone."))
         }
         .toggleStyle(.switch)
         .tint(HolzBarTheme.Palette.accent)

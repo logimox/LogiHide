@@ -85,7 +85,7 @@ final class ScriptStore {
     @ObservationIgnored private var storeWasMissing = false
 
     private static let supportFolder: URL = URL.applicationSupportDirectory
-        .appending(path: "holzBar", directoryHint: .isDirectory)
+        .appending(path: "LogiHide", directoryHint: .isDirectory)
 
     /// `~/Library/Application Support/holzBar/Scripts`, the folder used until the user chooses
     /// another one. It is the only folder holzBar ever creates.

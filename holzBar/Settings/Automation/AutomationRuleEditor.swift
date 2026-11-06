@@ -103,7 +103,7 @@ struct AutomationRuleEditor: View {
             }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("macOS shares the Wi-Fi network name only with apps that may use Location Services. holzBar uses it only to read that name and never reads your location. macOS asks for your permission next.")
+            Text("macOS shares the Wi-Fi network name only with apps that may use Location Services. LogiHide uses it only to read that name and never reads your location. macOS asks for your permission next.")
         }
         .alert("Bluetooth Device", isPresented: $isAskingForBluetooth) {
             Button("Continue") {
@@ -113,7 +113,7 @@ struct AutomationRuleEditor: View {
             }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("macOS lets an app see which Bluetooth devices are connected only with your permission. holzBar reads the names of your paired devices and whether they are connected, nothing else. macOS asks for your permission next.")
+            Text("macOS lets an app see which Bluetooth devices are connected only with your permission. LogiHide reads the names of your paired devices and whether they are connected, nothing else. macOS asks for your permission next.")
         }
         .confirmationDialog(
             "Bluetooth Device",
@@ -605,7 +605,7 @@ private struct WiFiPermissionNote: View {
     var body: some View {
         if !monitor.isAuthorized {
             VStack(alignment: .leading, spacing: HolzBarTheme.Spacing.xxs) {
-                Label("Needs Location Services. Until you allow holzBar, this condition is never true.", systemImage: "lock")
+                Label("Needs Location Services. Until you allow LogiHide, this condition is never true.", systemImage: "lock")
                     .font(HolzBarTheme.Typography.caption)
                     .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)

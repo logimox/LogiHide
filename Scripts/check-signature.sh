@@ -43,6 +43,7 @@ if [ "$#" -ne 1 ] || [ ! -d "$1" ]; then
     exit 2
 fi
 APP="${1%/}"
+MAIN_EXECUTABLE="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Contents/Info.plist")"
 FAILED=0
 
 report() {
@@ -89,7 +90,7 @@ for _ in "${ALLOWED_NESTED[@]}"; do
     COUNTS+=(0)
 done
 while IFS= read -r -d '' FILE; do
-    if [ "$FILE" = "$APP/Contents/MacOS/holzBar" ]; then
+    if [ "$FILE" = "$APP/Contents/MacOS/$MAIN_EXECUTABLE" ]; then
         continue
     fi
     # Captured first, like codesign below, so SIGPIPE cannot hide a match under pipefail.

@@ -22,7 +22,7 @@ struct TidyUpSheet: View {
             Text("Tidy Up")
                 .font(HolzBarTheme.Typography.title)
                 .accessibilityAddTraits(.isHeader)
-            Text("holzBar looked at the apps in your menu bar on this Mac. Nothing leaves your Mac and nothing is recorded. It proposes to hide what works in the background; the clock, the battery and apps with messages stay. Uncheck what should stay visible.")
+            Text("LogiHide looked at the apps in your menu bar on this Mac. Nothing leaves your Mac and nothing is recorded. It proposes to hide what works in the background; the clock, the battery and apps with messages stay. Uncheck what should stay visible.")
                 .font(HolzBarTheme.Typography.callout)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)

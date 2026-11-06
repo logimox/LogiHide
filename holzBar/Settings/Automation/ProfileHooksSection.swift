@@ -35,7 +35,7 @@ struct ProfileHooksSection: View {
                 .accessibilityAddTraits(.isHeader)
             VStack(alignment: .leading, spacing: HolzBarTheme.Spacing.xxs) {
                 Text("Run a script you allowed before or after a layout profile is applied.")
-                Text("holzBar waits for scripts that run before a profile, up to their time limit.")
+                Text("LogiHide waits for scripts that run before a profile, up to their time limit.")
                 Text("A profile applied by a URL, a Shortcut or a Focus runs no hooks.")
             }
             .font(HolzBarTheme.Typography.caption)

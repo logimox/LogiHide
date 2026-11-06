@@ -86,7 +86,7 @@ struct ModulesSettingsPane: View {
         } else if module.id == MenuBarDragController.moduleID {
             if #available(macOS 27.0, *) {
                 HStack(spacing: HolzBarTheme.Spacing.sm) {
-                    Text("Drop an item on the holzBar icon or on the open Shelf to hide its app.")
+                    Text("Drop an item on the LogiHide icon or on the open Shelf to hide its app.")
                         .font(HolzBarTheme.Typography.callout)
                         .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)

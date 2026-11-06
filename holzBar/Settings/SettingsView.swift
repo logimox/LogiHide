@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import DuoStatusKit
 
 struct SettingsView: View {
     @Environment(AppState.self) var appState
@@ -96,7 +97,7 @@ struct SettingsView: View {
                         .scaledToFit()
                         .frame(width: titleSize, height: titleSize)
                         .accessibilityHidden(true)
-                    Text("holzBar")
+                    Text("LogiHide")
                         .font(HolzBarTheme.Typography.sidebar(size: titleSize, weight: .medium))
                         .foregroundStyle(sidebarTextStyle)
                 }
@@ -163,6 +164,8 @@ struct SettingsView: View {
     @ViewBuilder
     private var settingsPane: some View {
         switch navigationState.settingsNavigationIdentifier {
+        case .systemStatus:
+            DuoStatusSettings()
         case .general:
             GeneralSettingsPane(settings: appState.settings.general)
         case .menuBarLayout:

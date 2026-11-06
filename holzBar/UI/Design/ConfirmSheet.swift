@@ -142,7 +142,7 @@ extension View {
         )
         ConfirmSheet(
             title: Text(verbatim: "Revoke this permission?"),
-            message: Text(verbatim: "holzBar stops working with it until you allow it again."),
+            message: Text(verbatim: "LogiHide stops working with it until you allow it again."),
             confirmTitle: "Revoke",
             cancelTitle: "Cancel",
             isDestructive: true,

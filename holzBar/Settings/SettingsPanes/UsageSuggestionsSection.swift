@@ -71,7 +71,7 @@ private struct UsageDataSheet: View {
         VStack(alignment: .leading, spacing: HolzBarTheme.Spacing.md) {
             Text("Stored Usage")
                 .font(.headline)
-            Text("Opens per day, oldest first. This is everything holzBar keeps.")
+            Text("Opens per day, oldest first. This is everything LogiHide keeps.")
                 .font(HolzBarTheme.Typography.callout)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
             if rows.isEmpty {

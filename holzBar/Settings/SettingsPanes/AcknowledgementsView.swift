@@ -53,10 +53,17 @@ struct AcknowledgementsView: View {
 
     @ViewBuilder
     private var holzBarGroup: some View {
-        AcknowledgementsGroup(title: "holzBar") {
-            Text("holzBar is free software, licensed under the \(Acknowledgements.gplLicense).")
+        AcknowledgementsGroup(title: "LogiHide") {
+            Text("Free software under GNU GPL v3.0. There is no warranty. You may modify and redistribute it under this license.")
                 .fixedSize(horizontal: false, vertical: true)
-            Link("License", destination: Constants.repositoryURL.appending(path: "blob/main/LICENSE"))
+            AcknowledgementRow(acknowledgement: Acknowledgement(
+                name: "LogiHide",
+                repository: Constants.repositoryURL.absoluteString,
+                version: nil,
+                use: "Modified on 2026-11-06 by logimox. Based on holzBar, Ice and DuoBar.",
+                license: Acknowledgements.gplLicense,
+                licenseFile: "GPLv3"
+            ))
         }
     }
 
@@ -151,7 +158,7 @@ private struct AcknowledgementRow: View {
             let url,
             let text = try? String(contentsOf: url, encoding: .utf8)
         else {
-            return String(localized: "The license text is missing from this copy of holzBar.")
+            return String(localized: "The license text is missing from this copy of LogiHide.")
         }
         return text
     }

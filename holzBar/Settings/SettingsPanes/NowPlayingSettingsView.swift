@@ -19,7 +19,7 @@ struct NowPlayingSettingsView: View {
         VStack(alignment: .leading, spacing: HolzBarTheme.Spacing.sm) {
             Toggle("Music", isOn: follows(.music, settings: settings))
             Toggle("Spotify", isOn: follows(.spotify, settings: settings))
-            Text("Music and Spotify tell holzBar what they play.")
+            Text("Music and Spotify tell LogiHide what they play.")
                 .font(HolzBarTheme.Typography.caption)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
             @Bindable var settings = settings

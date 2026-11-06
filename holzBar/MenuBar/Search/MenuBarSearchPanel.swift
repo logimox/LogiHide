@@ -488,9 +488,9 @@ private struct SettingsButton: View {
                 .scaledToFit()
                 .foregroundStyle(.secondary)
                 .padding(2)
-                .accessibilityLabel(Text("holzBar Settings…"))
+                .accessibilityLabel(Text("LogiHide Settings…"))
         }
-        .help("holzBar Settings…")
+        .help("LogiHide Settings…")
     }
 }
 

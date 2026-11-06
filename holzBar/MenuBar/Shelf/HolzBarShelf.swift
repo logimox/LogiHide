@@ -70,7 +70,7 @@ final class HolzBarShelfPanel: NSPanel {
             backing: .buffered,
             defer: false
         )
-        self.title = "holzBar Shelf"
+        self.title = "LogiHide Shelf"
         self.titlebarAppearsTransparent = true
         self.isMovableByWindowBackground = true
         self.allowsToolTipsWhenApplicationIsInactive = true
@@ -1063,7 +1063,7 @@ private struct HolzBarShelfContentView: View {
     @ViewBuilder
     private var content: some View {
         if menuBarManager.isMenuBarHiddenBySystemUserDefaults {
-            Text("holzBar cannot display menu bar items for automatically hidden menu bars")
+            Text("LogiHide cannot display menu bar items for automatically hidden menu bars")
                 .padding(.horizontal, 10)
         } else if itemManager.itemCache.managedItems.isEmpty {
             HStack {

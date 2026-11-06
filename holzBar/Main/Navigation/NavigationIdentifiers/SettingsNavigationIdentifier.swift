@@ -6,6 +6,7 @@
 /// The navigation identifier type for the "Settings" interface.
 nonisolated enum SettingsNavigationIdentifier: String, NavigationIdentifier {
     case general = "General"
+    case systemStatus = "System Status"
     case menuBarLayout = "Menu Bar Layout"
     case menuBarAppearance = "Menu Bar Appearance"
     case automation = "Automation"
@@ -15,7 +16,7 @@ nonisolated enum SettingsNavigationIdentifier: String, NavigationIdentifier {
     case about = "About"
 
     /// The panes about the menu bar, the first group of the sidebar.
-    static let menuBarGroup: [SettingsNavigationIdentifier] = [.menuBarLayout, .menuBarAppearance, .automation]
+    static let menuBarGroup: [SettingsNavigationIdentifier] = [.systemStatus, .menuBarLayout, .menuBarAppearance, .automation]
 
     /// The pane that lists the optional modules, the second group of the sidebar.
     static let modulesGroup: [SettingsNavigationIdentifier] = [.modules]
@@ -25,6 +26,7 @@ nonisolated enum SettingsNavigationIdentifier: String, NavigationIdentifier {
 
     @MainActor var iconResource: IconResource {
         switch self {
+        case .systemStatus: .systemSymbol("gauge.with.dots.needle.50percent")
         case .general: .systemSymbol("gearshape")
         case .menuBarLayout: .systemSymbol("rectangle.topthird.inset.filled")
         case .menuBarAppearance: .systemSymbol("swatchpalette")

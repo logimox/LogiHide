@@ -109,7 +109,7 @@ enum SettingsBackup {
         let panel = NSSavePanel()
         panel.allowedContentTypes = [.propertyList]
         panel.nameFieldStringValue = "holzBar Settings.plist"
-        panel.title = String(localized: "Export holzBar Settings")
+        panel.title = String(localized: "Export LogiHide Settings")
         NSApp.activate()
         guard panel.runModal() == .OK, let url = panel.url else {
             return
@@ -135,7 +135,7 @@ enum SettingsBackup {
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [.propertyList]
         panel.allowsMultipleSelection = false
-        panel.title = String(localized: "Import holzBar Settings")
+        panel.title = String(localized: "Import LogiHide Settings")
         NSApp.activate()
         guard panel.runModal() == .OK, let url = panel.url else {
             return
@@ -150,7 +150,7 @@ enum SettingsBackup {
                 guard let settings = try PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any] else {
                     throw CocoaError(.fileReadCorruptFile)
                 }
-                var informativeText = String(localized: "holzBar will replace its current settings with the ones from “\(url.lastPathComponent)” and restart.")
+                var informativeText = String(localized: "LogiHide will replace its current settings with the ones from “\(url.lastPathComponent)” and restart.")
                 // Scripts are set up only on this Mac, so the file's rules that use one are left
                 // out (T-11-H1). The question says how many, so nothing is dropped silently.
                 let leftOut = (settings[Defaults.Key.automationRules.rawValue] as? Data)
@@ -199,7 +199,7 @@ enum SettingsBackup {
                 if let error {
                     await Self.show(
                         error,
-                        message: String(localized: "holzBar could not restart itself. Quit holzBar and open it again."),
+                        message: String(localized: "LogiHide could not restart itself. Quit LogiHide and open it again."),
                         attachedTo: nil
                     )
                 } else {

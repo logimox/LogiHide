@@ -68,7 +68,7 @@ struct AboutSettingsPane: View {
                 }
 
                 VStack(alignment: .leading) {
-                    Text("holzBar")
+                    Text("LogiHide")
                         .font(HolzBarTheme.Typography.display)
                         .foregroundStyle(.primary)
 
@@ -101,6 +101,12 @@ struct AboutSettingsPane: View {
             Link("Ice", destination: Constants.originalIceURL)
             Text("by Jordan Baird")
         }
+        HStack(spacing: 4) {
+            Text("LogiHide combines")
+            Link("holzBar", destination: URL(string: "https://github.com/holzcloud/holzBar")!)
+            Text("+")
+            Link("DuoBar", destination: URL(string: "https://github.com/Mikeli7666/DuoBar")!)
+        }
         .font(HolzBarTheme.Typography.lead)
         .foregroundStyle(.secondary)
     }
@@ -120,13 +126,8 @@ struct AboutSettingsPane: View {
     @ViewBuilder
     private var updatesSection: some View {
         HolzBarSection(options: .hasDividers) {
-            HStack {
-                Text("Updates are installed with Homebrew:")
-                Spacer()
-                Text("brew update && brew upgrade --cask holzbar")
-                    .font(.body.monospaced())
-                    .textSelection(.enabled)
-            }
+            Text("Development build. Download LogiHide updates and source code from its own repository.")
+                .fixedSize(horizontal: false, vertical: true)
             HStack {
                 Text("Release notes for every version are on GitHub.")
                 Spacer()
@@ -141,7 +142,7 @@ struct AboutSettingsPane: View {
     @ViewBuilder
     private func bottomBar(containerShape: some InsettableShape) -> some View {
         HStack {
-            Button("Quit holzBar") {
+            Button("Quit LogiHide") {
                 NSApp.terminate(nil)
             }
             Spacer()

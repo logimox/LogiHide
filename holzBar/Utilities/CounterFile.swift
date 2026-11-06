@@ -14,7 +14,7 @@ nonisolated enum CounterFile {
     /// The location of the file with the given name in holzBar's folder.
     static func url(named name: String) -> URL {
         URL.applicationSupportDirectory
-            .appending(path: "holzBar", directoryHint: .isDirectory)
+            .appending(path: "LogiHide", directoryHint: .isDirectory)
             .appending(path: name, directoryHint: .notDirectory)
     }
 

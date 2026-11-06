@@ -80,7 +80,7 @@ struct AccessoryAlertsBodyView: View {
             EmptyState(
                 systemImage: "airpods",
                 title: Text("Accessories"),
-                message: Text("holzBar may not use Bluetooth, so connection alerts are off."),
+                message: Text("LogiHide may not use Bluetooth, so connection alerts are off."),
                 actionTitle: "Open Bluetooth Settings"
             ) {
                 if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Bluetooth") {

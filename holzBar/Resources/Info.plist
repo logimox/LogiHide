@@ -5,27 +5,27 @@
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>OSAScriptingDefinition</key>
-	<string>holzBar.sdef</string>
+	<string>LogiHide.sdef</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.holzcloud.holzBar</string>
+			<string>com.logimox.LogiHide</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>holzbar</string>
+				<string>logihide</string>
 			</array>
 		</dict>
 	</array>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>holzBar sees which of your paired Bluetooth devices are connected, so automation rules and accessory alerts can react to it. It never connects to a device, scans for devices or sends anything to one.</string>
+	<string>LogiHide sees which of your paired Bluetooth devices are connected, to show audio output status and support automation rules and accessory alerts. It never connects to a device, scans for devices or sends anything to one.</string>
 	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>holzBar shows your next events and their meeting links in the notch hub. It reads them on this Mac only and never sends or stores them.</string>
+	<string>LogiHide shows your next events and their meeting links in the notch hub. It reads them on this Mac only and never sends or stores them.</string>
 	<key>NSDownloadsFolderUsageDescription</key>
-	<string>holzBar watches your Downloads folder for downloads in progress, to show them at the notch. It never reads what you download.</string>
+	<string>LogiHide watches your Downloads folder for downloads in progress, to show them at the notch. It never reads what you download.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>holzBar reads the name of the Wi-Fi network you are connected to, so an automation rule can react to it. It does not read your location.</string>
+	<string>LogiHide reads the name of the Wi-Fi network you are connected to, to show network status and support your automation rules. It does not read your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>holzBar reads the name of the Wi-Fi network you are connected to, so an automation rule can react to it. It does not read your location.</string>
+	<string>LogiHide reads the name of the Wi-Fi network you are connected to, to show network status and support your automation rules. It does not read your location.</string>
 </dict>
 </plist>

@@ -93,7 +93,7 @@ struct NewItemsTile: View {
             } label: {
                 Label("New items", systemImage: "sparkles")
             }
-            Text("Items holzBar has not seen before land in this section.")
+            Text("Items LogiHide has not seen before land in this section.")
                 .font(HolzBarTheme.Typography.caption)
                 .foregroundStyle(HolzBarTheme.Palette.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)

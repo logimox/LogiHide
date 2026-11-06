@@ -110,6 +110,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
+        appState.menuBarManager.controlItem(withName: .visible)?.prepareSystemStatus(with: appState)
+
         // Depending on the permissions state, either perform setup
         // or prompt to grant permissions.
         switch appState.permissions.permissionsState {
@@ -153,6 +155,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        appState.menuBarManager.controlItem(withName: .visible)?.invalidateSystemStatus()
         if #available(macOS 27.0, *) {
             // Released synchronously, before the process goes, so no application stays hidden.
             appState.concealer27.releaseAllForTermination()
