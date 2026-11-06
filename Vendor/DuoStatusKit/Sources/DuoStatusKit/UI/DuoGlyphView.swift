@@ -195,7 +195,7 @@ struct DuoGlyphView: View {
                 rowCenterYOffset: metrics.ringYOffset,
                 animationsEnabled: motionAllowed
             )
-            
+
             if showBatteryPercentage,
                glyphState.ringPresentation.mode != .adaptive,
                let pct = status.battery.percentage {

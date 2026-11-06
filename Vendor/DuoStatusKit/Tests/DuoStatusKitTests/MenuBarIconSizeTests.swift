@@ -51,7 +51,7 @@ final class MenuBarIconSizeTests: XCTestCase {
         XCTAssertEqual(DuoGlyphMetrics.standard.scaled(by: 1), DuoGlyphMetrics.standard)
         XCTAssertEqual(DuoGlyphMetrics.standard.scaled(by: 1).statusItemWidth, 27, accuracy: 0.0001)
     }
-    
+
     func testExtraLargePresetGrowsTheStatusItemWidth() {
         XCTAssertEqual(
             MenuBarIconSize.statusItemWidth(for: MenuBarIconSize.extraLargeScale),

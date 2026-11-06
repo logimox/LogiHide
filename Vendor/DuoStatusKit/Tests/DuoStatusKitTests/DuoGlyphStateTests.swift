@@ -200,7 +200,7 @@ final class DuoGlyphStateTests: XCTestCase {
         XCTAssertEqual(DuoVolumeIndicatorGeometry.inactiveOpacity, 0.30)
         XCTAssertEqual(DuoVolumeIndicatorGeometry.unknownOpacity, 0.30)
     }
-    
+
     func testNativeVisualMetricsScaleProportionallyAtEverySupportedEndpoint() {
         let standard = DuoGlyphMetrics.standard
         for scale in [0.80, 1.00, 1.05] {
