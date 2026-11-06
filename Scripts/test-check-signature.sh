@@ -189,7 +189,7 @@ sign_framework "$WORK/second/holzBar.app" "$HELPER" NowPlayingRemote yes
 framework "$WORK/second/holzBar.app" "$HELPER" Other
 sign_framework "$WORK/second/holzBar.app" "$HELPER" Other yes
 seal_app "$WORK/second/holzBar.app"
-expect 9 "a second framework" 1 "only Contents/Frameworks/NowPlayingRemote.framework may be nested" "$WORK/second/holzBar.app"
+expect 9 "a second framework" 1 "Other.framework" "$WORK/second/holzBar.app"
 
 fixture entitled yes
 framework "$WORK/entitled/holzBar.app" "$HELPER" NowPlayingRemote executable
@@ -222,6 +222,37 @@ framework "$WORK/soft/holzBar.app" "$HELPER" NowPlayingRemote
 sign_framework "$WORK/soft/holzBar.app" "$HELPER" NowPlayingRemote no
 seal_app "$WORK/soft/holzBar.app"
 expect 14 "the helper without the hardened runtime" 1 "not signed with the hardened runtime" "$WORK/soft/holzBar.app"
+
+# The concealment helper is a separate signed background app, not a framework.
+helper_app() {
+    local parent="$1" runtime="$2"
+    shift 2
+    local helper="$parent/Contents/Helpers/LogiHideConcealer.app"
+    mkdir -p "$helper/Contents/MacOS"
+    cp "$WORK/holzBar" "$helper/Contents/MacOS/LogiHideConcealer"
+    local plist="$helper/Contents/Info.plist"
+    plutil -create xml1 "$plist"
+    plutil -insert CFBundleExecutable -string LogiHideConcealer "$plist"
+    plutil -insert CFBundleIdentifier -string com.logimox.LogiHide.Concealer "$plist"
+    plutil -insert CFBundlePackageType -string APPL "$plist"
+    local args=(--force --sign -)
+    [ "$runtime" = yes ] && args+=(--options runtime)
+    if [ "$#" -gt 0 ]; then
+        entitlements "$WORK/concealer-entitlements.plist" "$@"
+        args+=(--entitlements "$WORK/concealer-entitlements.plist")
+    fi
+    codesign "${args[@]}" "$helper" 2> /dev/null
+    seal_app "$parent"
+}
+fixture concealer yes
+helper_app "$WORK/concealer/holzBar.app" yes
+expect 15 "isolated concealment app" 0 "LogiHideConcealer.app: hardened runtime, entitlements: none" "$WORK/concealer/holzBar.app"
+fixture concealer_entitled yes
+helper_app "$WORK/concealer_entitled/holzBar.app" yes com.apple.security.personal-information.calendars
+expect 16 "concealment app with an entitlement" 1 "carries the entitlement" "$WORK/concealer_entitled/holzBar.app"
+fixture concealer_soft yes
+helper_app "$WORK/concealer_soft/holzBar.app" no
+expect 17 "concealment app without hardened runtime" 1 "not signed with the hardened runtime" "$WORK/concealer_soft/holzBar.app"
 
 if [ "$FAILURES" -ne 0 ]; then
     echo "$FAILURES of $TOTAL fixtures did not match" >&2

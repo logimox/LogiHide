@@ -18,7 +18,9 @@ import OSLog
 @MainActor
 @Observable
 final class Concealer27 {
-    @ObservationIgnored private let controller = ConcealmentController27(backend: MenuBarAssessmentAssertion27())
+    @ObservationIgnored private let backend = IsolatedConcealmentBackend27()
+    @ObservationIgnored private lazy var controller = ConcealmentController27(backend: backend)
+    @ObservationIgnored private var helperRestarts = 0
     @ObservationIgnored private let logger = Logger(category: "Concealer27")
     @ObservationIgnored private weak var appState: AppState?
     /// Tasks that observe display changes; cancelled with the concealer.
@@ -139,6 +141,18 @@ final class Concealer27 {
 
     func performSetup(with appState: AppState) {
         self.appState = appState
+        backend.onUnexpectedExit = { [weak self] in
+            guard let self else { return }
+            let previous = applyTask
+            Task { [weak self] in
+                await previous?.value
+                guard let self else { return }
+                controller.releaseAll()
+                guard helperRestarts < 3 else { return }
+                helperRestarts += 1
+                update()
+            }
+        }
         guard MenuBarAssessmentAssertion27.isAvailable else {
             logger.error("MenuBarClientCore assertions are unavailable, so items will not be hidden")
             return
@@ -293,6 +307,7 @@ final class Concealer27 {
     /// Releases every assertion as holzBar quits, so no application stays hidden.
     func releaseAllForTermination() {
         controller.releaseAll()
+        backend.shutdown()
     }
 
     /// Derives what to conceal from holzBar's sections and applies it.

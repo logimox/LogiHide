@@ -32,11 +32,12 @@ set -euo pipefail
 # check, network ones and get-task-allow included. Adding a key needs the maintainer's decision.
 ALLOWED_ENTITLEMENTS=("com.apple.security.personal-information.calendars")
 
-# The only nested code holzBar may contain, relative to the app: the helper framework that the
+# Allowed nested code: the existing Now Playing framework and LogiHide's isolated
+# concealment app. Neither may carry entitlements. The framework is the helper that the
 # Now Playing module's "Read all apps" runs through Apple's perl. Adding an entry needs the
 # maintainer's decision and a named exception in CLAUDE.md (Private API in modules). The
 # release workflow mirrors the rules below between its "nested code rules" comments.
-ALLOWED_NESTED=("Contents/Frameworks/NowPlayingRemote.framework")
+ALLOWED_NESTED=("Contents/Frameworks/NowPlayingRemote.framework" "Contents/Helpers/LogiHideConcealer.app")
 
 if [ "$#" -ne 1 ] || [ ! -d "$1" ]; then
     echo "usage: $0 path/to/holzBar.app" >&2
@@ -70,11 +71,18 @@ is_allowed_nested() {
     return 1
 }
 
-for FOLDER in XPCServices PlugIns Helpers; do
+for FOLDER in XPCServices PlugIns; do
     if [ -e "$APP/Contents/$FOLDER" ]; then
         report "$(basename "$APP")/Contents/$FOLDER exists; only ${ALLOWED_NESTED[*]} may be nested"
     fi
 done
+if [ -d "$APP/Contents/Helpers" ]; then
+    while IFS= read -r -d '' ENTRY; do
+        if ! is_allowed_nested "${ENTRY#"$APP"/}"; then
+            report "$(basename "$APP")/${ENTRY#"$APP"/} is not an allowed helper"
+        fi
+    done < <(find "$APP/Contents/Helpers" -mindepth 1 -maxdepth 1 -print0)
+fi
 if [ -d "$APP/Contents/Frameworks" ]; then
     while IFS= read -r -d '' ENTRY; do
         if ! is_allowed_nested "${ENTRY#"$APP"/}"; then

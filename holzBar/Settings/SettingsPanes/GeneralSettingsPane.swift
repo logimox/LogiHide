@@ -81,6 +81,17 @@ struct GeneralSettingsPane: View {
         Text("Click for system status. Shift-click to show or hide icons. Right-click for the menu.")
             .font(.caption)
             .foregroundStyle(.secondary)
+        HStack {
+            Button("Open System Status") {
+                appState.menuBarManager.controlItem(withName: .visible)?.toggleSystemStatus()
+            }
+            Button("Show Hidden Icons") {
+                appState.menuBarManager.section(withName: .hidden)?.show()
+            }
+            Button("Hide Icons") {
+                appState.menuBarManager.section(withName: .hidden)?.hide(isUserRequest: true)
+            }
+        }
         if settings.showHolzBarIcon {
             Toggle(isOn: $settings.showsHiddenItemCount) {
                 HStack(spacing: HolzBarTheme.Spacing.sm) {

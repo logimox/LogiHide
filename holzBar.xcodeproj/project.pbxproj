@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A10000000000000000000001 /* DuoStatusKit in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000002 /* DuoStatusKit */; };
 		7138A00C2E5B0001008F130C /* NowPlayingRemote.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7138A0022E5B0001008F1302 /* NowPlayingRemote.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+        A20000000000000000000001 /* Helper in Embed Helpers */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+        A20000000000000000000003 /* IPC in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,12 +35,15 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+        A20000000000000000000005 = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = Contents/Helpers; dstSubfolderSpec = 1; files = (A20000000000000000000001, ); name = "Embed Helpers"; runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
         A10000000000000000000004 /* DuoStatusKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Vendor/DuoStatusKit; sourceTree = "<group>"; };
 		7166832A2A767E6A006ABF84 /* holzBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogiHide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7138A0022E5B0001008F1302 /* NowPlayingRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NowPlayingRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+        A20000000000000000000002 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogiHideConcealer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        A20000000000000000000004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holzBar/Core/ConcealmentMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -55,6 +60,7 @@
 		7188A69E2E280BB4008F131D /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
 		71BDFBE12C978E2A00EF145F /* holzBar */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (71BDFC6C2C978E2A00EF145F /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = holzBar; sourceTree = "<group>"; };
 		7138A0012E5B0001008F1301 /* NowPlayingRemote */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NowPlayingRemote; sourceTree = "<group>"; };
+        A20000000000000000000006 = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ConcealmentHelper; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+        A20000000000000000000011 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				A10000000000000000000004 /* DuoStatusKit */,
+                A20000000000000000000006,
+                A20000000000000000000004,
 				7188A69E2E280BB4008F131D /* Shared */,
 				71BDFBE12C978E2A00EF145F /* holzBar */,
 				7138A0012E5B0001008F1301 /* NowPlayingRemote */,
@@ -91,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				7166832A2A767E6A006ABF84 /* holzBar.app */,
+                A20000000000000000000002,
 				7138A0022E5B0001008F1302 /* NowPlayingRemote.framework */,
 			);
 			name = Products;
@@ -108,11 +118,13 @@
 				716683282A767E6A006ABF84 /* Resources */,
 				1720D48F2BB9B60500A7AC63 /* SwiftLint */,
 				7138A00B2E5B0001008F130B /* Embed Frameworks */,
+                A20000000000000000000005,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				7138A00A2E5B0001008F130A /* PBXTargetDependency */,
+                A20000000000000000000007,
 			);
 			fileSystemSynchronizedGroups = (
 				7188A69E2E280BB4008F131D /* Shared */,
@@ -147,6 +159,16 @@
 			productReference = 7138A0022E5B0001008F1302 /* NowPlayingRemote.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+        A20000000000000000000008 /* LogiHideConcealer */ = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = A20000000000000000000009;
+            buildPhases = (A20000000000000000000010, A20000000000000000000011, A20000000000000000000012, );
+            buildRules = (); dependencies = ();
+            fileSystemSynchronizedGroups = (A20000000000000000000006, );
+            name = LogiHideConcealer; packageProductDependencies = ();
+            productName = LogiHideConcealer; productReference = A20000000000000000000002;
+            productType = "com.apple.product-type.application";
+        };
 /* End PBXNativeTarget section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -216,6 +238,7 @@
 			targets = (
 				716683292A767E6A006ABF84 /* holzBar */,
 				7138A0032E5B0001008F1303 /* NowPlayingRemote */,
+                A20000000000000000000008,
 			);
 		};
 /* End PBXProject section */
@@ -228,6 +251,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+        A20000000000000000000012 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -267,6 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+        A20000000000000000000010 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A20000000000000000000003, ); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -275,6 +300,7 @@
 			target = 7138A0032E5B0001008F1303 /* NowPlayingRemote */;
 			targetProxy = 7138A0092E5B0001008F1309 /* PBXContainerItemProxy */;
 		};
+        A20000000000000000000007 = {isa = PBXTargetDependency; target = A20000000000000000000008; };
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -410,7 +436,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_APP_SANDBOX = NO;
@@ -425,7 +451,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide;
 				PRODUCT_MODULE_NAME = holzBar;
 				PRODUCT_NAME = LogiHide;
@@ -446,7 +472,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_APP_SANDBOX = NO;
@@ -461,7 +487,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide;
 				PRODUCT_MODULE_NAME = holzBar;
 				PRODUCT_NAME = LogiHide;
@@ -477,7 +503,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -493,7 +519,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide.NowPlayingRemote;
 				PRODUCT_MODULE_NAME = NowPlayingRemote;
 				PRODUCT_NAME = NowPlayingRemote;
@@ -510,7 +536,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -526,7 +552,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide.NowPlayingRemote;
 				PRODUCT_MODULE_NAME = NowPlayingRemote;
 				PRODUCT_NAME = NowPlayingRemote;
@@ -537,6 +563,8 @@
 			};
 			name = Release;
 		};
+        A20000000000000000000013 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = ""; CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO; COMBINE_HIDPI_IMAGES = YES; ENABLE_HARDENED_RUNTIME = YES; ENABLE_APP_SANDBOX = NO; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_LSUIElement = YES; INFOPLIST_KEY_CFBundleDisplayName = "LogiHide Concealment"; MACOSX_DEPLOYMENT_TARGET = 27.0; PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide.Concealer; PRODUCT_NAME = LogiHideConcealer; SWIFT_VERSION = 6.2; SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor; SWIFT_APPROACHABLE_CONCURRENCY = YES; SKIP_INSTALL = YES; CURRENT_PROJECT_VERSION = 2; MARKETING_VERSION = 0.1.1;}; name = Debug; };
+        A20000000000000000000014 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; CODE_SIGN_ENTITLEMENTS = ""; CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO; COMBINE_HIDPI_IMAGES = YES; ENABLE_HARDENED_RUNTIME = YES; ENABLE_APP_SANDBOX = NO; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_LSUIElement = YES; INFOPLIST_KEY_CFBundleDisplayName = "LogiHide Concealment"; MACOSX_DEPLOYMENT_TARGET = 27.0; PRODUCT_BUNDLE_IDENTIFIER = com.logimox.LogiHide.Concealer; PRODUCT_NAME = LogiHideConcealer; SWIFT_VERSION = 6.2; SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor; SWIFT_APPROACHABLE_CONCURRENCY = YES; SKIP_INSTALL = YES; CURRENT_PROJECT_VERSION = 2; MARKETING_VERSION = 0.1.1;}; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -567,6 +595,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+        A20000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (A20000000000000000000013, A20000000000000000000014, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
 	};
 	rootObject = 716683222A767E6A006ABF84 /* Project object */;

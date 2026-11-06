@@ -46,7 +46,7 @@ final class MenuBarController: NSObject {
         observeNativeImageInputs()
     }
 
-    /// Assessment mode on macOS 27 forwards the button's image, but not its SwiftUI subview.
+    /// Supplies an AppKit image while assessment mode is active on macOS 27.
     @discardableResult
     func setNativeIconRequired(_ required: Bool) -> Bool {
         guard !isInvalidated else { return false }

@@ -8,3 +8,4 @@ xcodebuild -project "$ROOT/holzBar.xcodeproj" -scheme LogiHide \
     CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO build
 "$ROOT/Scripts/check-signature.sh" "$DERIVED/Build/Products/Release/LogiHide.app"
 echo "Built: $DERIVED/Build/Products/Release/LogiHide.app"
+echo "macOS 27: install LogiHide.app in /Applications before testing icon hiding."

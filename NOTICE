@@ -82,3 +82,11 @@ The combined work is distributed under GNU GPL v3.0; see LICENSE.
 This fork is not affiliated with or endorsed by the upstream authors.
 The macOS 27 indicator fix supplies a live native NSButton image while
 assessment-mode concealment is active and restores the hosted view on reveal.
+
+LogiHide 0.1.1 modifications, 2026-11-06
+--------------------------------------
+Added a background app for assessment-mode assertions, private parent/child
+pipe messages, lifecycle recovery, explicit show/hide controls and their tests.
+The helper's assertion implementation retains the holzBar/Barometer/Thaw credits.
+Documented and verified the macOS 27 requirement to run the menu app from
+/Applications, and added an installation script that preserves the prior app.

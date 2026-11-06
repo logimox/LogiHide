@@ -4,6 +4,10 @@ En menyapp för macOS som samlar batteri, nätverk och ljud i en kompakt indikat
 
 LogiHide är en modifierad fork av [holzBar](https://github.com/holzcloud/holzBar), med statusindikatorn och systemkontrollerna från [DuoBar](https://github.com/Mikeli7666/DuoBar). Grundfunktionerna för menyhantering kommer från holzBar och dess ursprungliga bas [Ice](https://github.com/jordanbaird/Ice).
 
+## Installation
+
+Flytta **LogiHide.app till `/Applications` (Program)** och starta den därifrån. På macOS 27 kan en app som körs från exempelvis en byggmapp få sin egen menyikon dold medan döljningen är aktiv. Detta är en [dokumenterad macOS-begränsning](https://www.getthaw.app/docs/thaw/frequent-issues#apps-running-outside-applications). Starta en kopia åt gången och behåll den installerade kopian som din vanliga app.
+
 ## Användning
 
 - **Klicka** på indikatorn för batteri, nätverk, volym och ljudenheter.
@@ -30,11 +34,17 @@ Kräver macOS 14 eller senare för appen och Xcode 27 med macOS 27 SDK för att 
 ```sh
 ./Scripts/build-logihide.sh
 ./Scripts/test-logihide.sh
+# Avsluta LogiHide före installation:
+./Scripts/install-logihide.sh
 ```
 
 Öppna alternativt `holzBar.xcodeproj` och välj schemat **LogiHide**. Projektfilen och interna holzBar-symboler behåller sina namn för att göra framtida uppdateringar från upstream enklare. Produkten heter `LogiHide.app` och byggs till `build/Build/Products/Release/`.
 
 Byggskriptet signerar lokalt, utan ett Apple-utvecklarkonto. Det installerar inte appen och återställer inga behörigheter. Bygget är inte Apple-notariserat. Äldre upstream-skript och distributionsfiler i repot avser holzBar; använd skripten ovan för LogiHide.
+
+På macOS 27 körs själva döljningen i den inbäddade bakgrundsappen `LogiHideConcealer.app`. Den har inga menyikoner eller extra behörigheter och kommunicerar bara med huvudappen genom privata standardströmmar. När huvudappen avslutas stängs kanalen, hjälpprocessen släpper sina döljningsanspråk och avslutas. Detta håller indikatorn skild från processen som macOS använder för döljningen.
+
+Under Allmänt finns även separata knappar för att öppna systemstatus samt visa och dölja ikoner. Menyfältslayout visar tillfälligt alla ikoner medan vyn är öppen.
 
 `Vendor/DuoStatusKit` innehåller en lokal kopia av DuoBars statuskod och tester, med dess ursprungliga Swift 5-språkläge. Huvudappen behåller holzBars Swift 6-inställningar. Inga externa paket hämtas.
 

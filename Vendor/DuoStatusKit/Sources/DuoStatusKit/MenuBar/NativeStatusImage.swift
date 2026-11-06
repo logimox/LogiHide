@@ -1,5 +1,4 @@
-// LogiHide, 2026-11-06. The assessment-mode menu bar forwards NSButton.image,
-// rather than arbitrary subviews of its status button, to MenuBarAgent.
+// LogiHide, 2026-11-06. Native image fallback for assessment-mode concealment.
 import AppKit
 import SwiftUI
 
